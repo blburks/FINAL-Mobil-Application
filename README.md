@@ -1,59 +1,67 @@
-📘 FINAL Mobile Application – soft210
-This repository contains the final project for the Mobile Application Development course. The app is built using React Native and Expo, following a modular architecture with reusable components, screens, hooks, and repositories for data handling.
-🚀 Features
-Organized folder structure for scalability
+# 📘 FINAL Mobile Application – SOFT 210
 
-Screen-based navigation
+This repository contains the final project for the Mobile Application Development course at Bates Technical College. The app is built using React Native and Expo, featuring SQLite database integration, file-based routing, and a full notes management system.
 
-Reusable UI components
+## 🚀 Features
 
-Asset management for images and icons
+- Full CRUD notes app (Create, Read, View notes)
+- SQLite database integration via `expo-sqlite`
+- File-based routing with Expo Router
+- Tab-based navigation with four accessible screens
+- Public REST API integration (`restful-api.dev`)
+- TypeScript throughout — screens, database, and repositories
+- Modular architecture with reusable components, hooks, and repositories
+- Dark/light theme support
 
-TypeScript support for type safety
+## 📂 Project Structure
+```
+app/                          # App entry and routing
+  (tabs)/                     # Tab-based screens
+    _layout.tsx               # Tab navigation layout
+    index.tsx                 # Home screen
+    explore.tsx               # Explore screen
+    NotesListScreen.tsx       # List all notes
+    AddNoteScreen.tsx         # Add a new note
+    NoteDetailScreen.tsx      # View note details
+components/                   # Reusable UI components
+hooks/                        # Custom React hooks
+repositories/
+  notes.ts                    # Data access layer for notes
+scripts/
+  database.ts                 # SQLite initialization and migrations
+constants/                    # Shared constants and theme
+assets/                       # Images and icons
+```
 
-Expo-based development workflow
+## 🛠️ Technologies Used
 
-(Add or adjust features based on what your app actually includes.)
+- React Native
+- Expo / Expo Router
+- TypeScript
+- expo-sqlite
+- REST API (`https://api.restful-api.dev/objects`)
 
-📂 Project Structure
-Code
-app/               # App entry and routing
-components/        # Reusable UI components
-screens/           # Individual screens/views
-hooks/             # Custom React hooks
-repositories/      # Data access and API logic
-assets/images/     # App images and icons
-constants/         # Shared constants
-🛠️ Technologies Used
-React Native
+## ▶️ Running the App
 
-Expo
-
-TypeScript
-
-JavaScript
-
-(Add Firebase, APIs, AsyncStorage, etc., if used.)
-
-▶️ Running the App
-Install dependencies
-
-bash
+1. Install dependencies
+```bash
 npm install
-Start the Expo development server
+```
 
-bash
+2. Start the Expo development server
+```bash
 npx expo start
-Run the app
+```
 
-Scan the QR code with Expo Go
+3. Run the app
+   - Scan the QR code with Expo Go
+   - Or launch on an iOS/Android emulator
 
-Or launch on an iOS/Android emulator
+## 📄 Assignment Notes
 
-📄 Assignment Notes
-This project was created as part of the final assessment for the Mobile Application Development course. It demonstrates understanding of component-based architecture, navigation, state management, and mobile UI development.
+This project was created as the final assessment for SOFT 210 – Mobile Application Development. It demonstrates understanding of component-based architecture, file-based navigation, SQLite database integration, TypeScript type safety, REST API consumption, and mobile UI development.
 
-(Add any required reflections or instructor‑specific notes.)
+## 👤 Author
 
-👤 Author
-Brad Burks (blburks)
+Bradley Burks (blburks)
+Bates Technical College – Software Development
