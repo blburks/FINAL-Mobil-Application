@@ -1,17 +1,42 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+type Note = {
+  id: number;
+  title: string;
+  content: string;
+  createdAt: string;
+};
+
+type RouteParams = {
+  note: Note;
+};
+
 export default function NoteDetailScreen() {
   const route = useRoute();
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
+  const params = route.params as RouteParams | undefined;
 
-  const { note } = route.params;
+  if (!params?.note) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>No note selected.</Text>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={styles.backButtonText}>Back</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  const { note } = params;
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{note.title}</Text>
       <Text style={styles.content}>{note.content}</Text>
-
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => navigation.goBack()}
@@ -47,4 +72,4 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
   },
-});
+}); 

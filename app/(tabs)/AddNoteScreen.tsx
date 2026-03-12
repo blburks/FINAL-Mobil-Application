@@ -1,29 +1,34 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import {
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
+import { addNote } from "../../repositories/notes";
 
 export default function AddNoteScreen() {
-  const navigation = useNavigation();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const navigation = useNavigation<any>();
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+
+  const handleSave = async () => {
+    if (!title.trim() || !content.trim()) return;
+    await addNote(title, content);
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Add a New Note</Text>
-
       <TextInput
         style={styles.input}
         placeholder="Note Title"
         value={title}
         onChangeText={setTitle}
       />
-
       <TextInput
         style={[styles.input, styles.contentInput]}
         placeholder="Note Content"
@@ -31,10 +36,9 @@ export default function AddNoteScreen() {
         onChangeText={setContent}
         multiline
       />
-
       <TouchableOpacity
         style={styles.saveButton}
-        onPress={() => navigation.goBack()}
+        onPress={handleSave}
       >
         <Text style={styles.saveButtonText}>Save Note</Text>
       </TouchableOpacity>
